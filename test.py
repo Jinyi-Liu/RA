@@ -11,7 +11,7 @@ win32file._setmaxstdio(4096)
 path = './txtfile'
 prepath = './preprocess'
 test = './test2'
-
+'''
 files = os.listdir(path)
 file = '6885_0.txt'
 
@@ -51,3 +51,4 @@ for item in _set:
     f.write(item)
     f.write('\n')
 f.close()
+'''

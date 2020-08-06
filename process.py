@@ -6,6 +6,7 @@ import numpy as np
 import threading
 from time import ctime
 import win32file
+
 win32file._setmaxstdio(4096)
 path = './txtfile'
 prepath = './preprocess'
@@ -14,64 +15,37 @@ _files = os.listdir(path)
 _files.sort()
 n = 300  # 每组n个文件来多线程
 
-thre = [_files[i:i + n] for i in range(0, len(_files), n)]
 
 def get_one_vote(files):
     dict_handle = {}
     dict_data = {}
     for file in files:
-        # 被写入的
-        dict_handle[file] = open(test+'/'+'test'+file,'a', encoding='UTF-8')
-    for file in files:
-        # 读取txt文件
-        data = open(path+'/'+file)
-        dict_data[file] = data.read()
-    for file in files:
-        '''
-        # f = open(prepath+'/'+'test'+file, 'a',encoding='UTF-8')
-        # processed files储存文件夹
-        # f = open(test + '/' + 'test' + file, 'w', encoding='UTF-8')
-        # txtfile储存文件夹
-        # data = open(path + '/' + file)
-        # Parse txt file with lxml
-        # handle = data.read()
-        '''
-        handle = dict_data[file]
+        f = open(test + '/' + 'test' + file, 'w', encoding='UTF-8')
+        data = open(path + '/' + file)
+        handle = data.read()
         soup = BeautifulSoup(handle, 'lxml')
         reg = re.compile('.*one vote*.')
         tag = soup.find_all(text=reg)
-        '''
-        # 查找p td div标签
-        _p = soup.find_all('p')
-        _td = soup.find_all('td')
-        _div = soup.find_all('div')
-        # 判断是否one vote在这些标签文本中
-        _set = []
-        for item in _div:
-            if type(item) != str:
-                # tempTrue = [True if 'one vote' in _ else False for _ in item.descendants]
-                tempTrue = [_ for _ in item.descendants if 'one vote' in _]
-                _set.extend(tempTrue)
-            elif 'one vote' in item:
-                _set.extend([item])
 
-        temp_p = [item.get_text() for item in _p if 'one vote' in item.get_text()]
-        temp_td = [item.get_text() for item in _td if 'one vote' in item.get_text()]
-
-        # 提取这些含有one vote标签中的文本
-        _set.extend(temp_p)
-        _set.extend(temp_td)
-        '''
         _set = [' '.join(item.split()) for item in tag if len(tag) < 10000]
         # 去掉重复的
         _set = list(set(_set))
-
         # 将文本set中的内容写入对应txt文件
         for item in _set:
-            dict_handle[file].write(item)
-            dict_handle[file].write('\n')
-        dict_handle[file].close()
+            f.write(item)
+            f.write('\n')
+        f.close()
 
+
+processed_file = os.listdir(test)[1:]
+processed_file = [item[4:] for item in processed_file]
+processed_file.sort()
+not_processed = list(set.difference(set(_files), set(processed_file)))
+not_processed.sort()
+
+# thre = [_files[i:i + n] for i in range(0, len(_files), n)]
+_files = not_processed
+thre = [_files[i:i + n] for i in range(0, len(_files), n)]
 
 threads = []
 for i in range(12):
