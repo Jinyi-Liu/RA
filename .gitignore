@@ -1,0 +1,4 @@
+# Project exclude paths
+/preprocess/
+/test/
+/txtfile/
