@@ -48,7 +48,7 @@ _files = not_processed
 thre = [_files[i:i + n] for i in range(0, len(_files), n)]
 
 threads = []
-for i in range(12):
+for i in range(5):
     _ = threading.Thread(target=get_one_vote, args=[thre[i]])
     threads.append(_)
 

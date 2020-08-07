@@ -9,13 +9,13 @@ import re
 import win32file
 win32file._setmaxstdio(4096)
 path = './txtfile'
-prepath = './preprocess'
+testing = './preprocess'
 test = './test2'
-'''
-files = os.listdir(path)
-file = '6885_0.txt'
 
-f = open(test+'/'+'test2'+file, 'w',encoding='UTF-8')
+files = os.listdir(path)
+file = '12208_0.txt'
+
+f = open(testing+'/'+file, 'w', encoding='UTF-8')
 data = open(path + '/' + file)
 # Parse txt file with lxml
 handle = data.read()
@@ -37,6 +37,7 @@ for item in _div:
     elif 'one vote' in item:
         _set.extend([item])
 
+
 temp_p = [item.get_text() for item in _p if 'one vote' in item.get_text()]
 temp_td = [item.get_text() for item in _td if 'one vote' in item.get_text()]
 
@@ -51,4 +52,3 @@ for item in _set:
     f.write(item)
     f.write('\n')
 f.close()
-'''
