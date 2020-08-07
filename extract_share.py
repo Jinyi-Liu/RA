@@ -21,7 +21,7 @@ for file in files:
     '''
     Solved:
     tag <p> with something like <font>****</font> in it.
-    16160
+    Example: 16160_1.html
     '''
     p = soup.find_all('p')
     _p = [item for item in p if 'outstanding' in item.get_text()]
