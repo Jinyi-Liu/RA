@@ -8,12 +8,26 @@ html_path = './txt2html_files'
 html_files = os.listdir(html_path)
 html_files.sort()
 
-keyword_ = 'outstanding'
-tag_search = 'div'
+keyword_ = 'one (1) vote'
+# tag_search = 'div'
 
 
 def get_tag_with_keyword_in_text(tags, keyword):
-    return [tag for tag in tags if re.search(keyword, tag.get_text(), re.IGNORECASE)]
+    if keyword == 'one (1) vote':
+        keyword = '.*one \(\d+\) vote*.'
+    if len(tags) == 0:
+        return []
+    if tags[0].name == 'tr':
+        tr_list = []
+        tag_iter = iter(tags)
+        while True:
+            try:
+                tag = tag_iter.__next__()
+                if re.search(keyword, ' '.join(tag.get_text().split()), re.IGNORECASE):
+                    tr_list.extend([tag, tag_iter.__next__()])
+            except StopIteration:
+                return tr_list
+    return [tag for tag in tags if re.search(keyword, ' '.join(tag.get_text().split()), re.IGNORECASE)]
 
 
 def get_contents(all_tags, keyword):
@@ -32,6 +46,8 @@ def get_contents(all_tags, keyword):
             tags_with_interest.extend(get_tag_with_keyword_in_text(all_tags, keyword_sole))
     #
     for tag in tags_with_interest:
+        tag_contents.append(tag.get_text())
+        '''
         temp = []
         for child_tag in tag:
             if type(child_tag) == bs4.element.NavigableString:
@@ -39,6 +55,7 @@ def get_contents(all_tags, keyword):
             else:
                 temp.append(child_tag.get_text())
         tag_contents.extend(temp)
+        '''
     return tag_contents
 
 
@@ -77,19 +94,39 @@ def get_paragraph_with_keyword(soup, tag_search, keyword):
             # Delete div tag with children (p tags) in it so as to not search repeatedly
             if tag_with_no_defined_tag(tag_descendants_names, processing_tags='div', not_wanted_tags='p'):
                 div_tags_with_no_p.append(tag)
+
         tag_contents = get_contents(div_tags_with_no_p, keyword)
     else:
         tag_contents = get_contents(tags, keyword)
 
-    return ' '.join(''.join(tag_contents).split())
+    tag_contents_list = [' '.join(''.join(tag_contents_sole).split()) for tag_contents_sole in tag_contents]
+    return tag_contents_list
+
+
+def print_num(tag_text, re_method, write_text=None, tag_type=None):
+    for _ in tag_text:
+        outstanding_num = re_method.findall(_)
+        if len(outstanding_num) >= 1:
+        #if len(outstanding_num) == 2 or len(outstanding_num) == 4:
+            if tag_type == 'tr':
+                for num in outstanding_num:
+                    write_text.write(num)
+                    write_text.write('\t')
+            else:
+                for num in outstanding_num:
+                    write_text.write(num)
+                    write_text.write('\t')
+                write_text.write('\n')
+            print(outstanding_num)
 
 
 '''
 Extract the outstanding shares from a given html file
 '''
-pre_name = 16918
-files = [item for item in html_files if str(pre_name) + '_' in item]
-file = '16918_0.html'
+pre_name = 65011
+keyword_ = 'outstanding'
+files = [item for item in html_files if item.startswith(str(pre_name)+'_')]
+file = '16918_3.html'
 for file in files:
     data = open(html_path + '/' + file)
     handle = data.read()
@@ -100,15 +137,25 @@ for file in files:
     tag <p> with something like <font>****</font> in it.
     Example: 16160_1.html
     '''
-    p_text = get_paragraph_with_keyword(soup, 'p', keyword=keyword)
-    div_text = get_paragraph_with_keyword(soup, 'div', keyword=keyword)
+    keyword_ = 'outstanding'
+    p_text = get_paragraph_with_keyword(soup, 'p', keyword=keyword_)
+    div_text = get_paragraph_with_keyword(soup, 'div', keyword=keyword_)
     # re_num = re.compile('\d{1,3}(?:\,\d{3})+(?:.\d{2})?')
-    m = re.compile(r"(\d[\d\s.,]*)\s*?(?:[^%\d])")
+    # m = re.compile(r"(\d[\d\s.,]*)\s*?(?:[^%\d])")
+    tr_text = get_paragraph_with_keyword(soup, 'tr', keyword='as a group')
 
-    re_num = re.compile('\d{1,3}(?:\,\d{3})+(?:\.\d{2})?|\d{3}(?:\.\d{2})')
-    print(re_num.findall(p_text)[:100])
-    print(m.findall(p_text))
-    print(re_num.findall(div_text)[:5])
+    re_num = re.compile('\d{1,3}(?:\,\d{3})+(?:\.\d{2})?|\d{3}(?:\.\d{2})|\d{1,3}(?:\.\d{1,2})')
+    f = open('./for_copy/{}.txt'.format(str(pre_name)), 'a')
+    print_num(p_text, re_num, f, tag_type='p')
+    print_num(div_text,re_num, f, tag_type='div')
+    print_num(tr_text, re_num, f, tag_type='tr')
+    f.write(file)
+    f.write('\n\r')
+    f.close()
+
+    # print(re_num.findall(p_text)[:100])
+    #print(m.findall(p_text))
+    #print(re_num.findall(div_text)[:5])
     print(file)
 
 

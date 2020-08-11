@@ -22,13 +22,7 @@ not_processed = set.difference(set(_files), set(processed_file))
 
 
 sole_processed_files = [item for item in processed_file if item[-6:]=='_0.txt']
-'''
-processed_files = os.listdir(test)[1:]
-processed_files.sort()
 
-processed_files = [q.findall(item)[0]+'.txt' for item in processed_files]
-processed_files = list(set(processed_files))
-'''
 q = re.compile(r'\d+')
 for file in sole_processed_files:
     shutil.copyfile(test+'/test'+file, sole+'/'+q.findall(file)[0]+'.txt')

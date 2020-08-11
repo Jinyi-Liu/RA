@@ -2,9 +2,12 @@
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/Dual_html" />
+      <excludeFolder url="file://$MODULE_DIR$/for_copy" />
       <excludeFolder url="file://$MODULE_DIR$/preprocess" />
       <excludeFolder url="file://$MODULE_DIR$/process_new" />
       <excludeFolder url="file://$MODULE_DIR$/processed_sole" />
+      <excludeFolder url="file://$MODULE_DIR$/read_html" />
       <excludeFolder url="file://$MODULE_DIR$/sole" />
       <excludeFolder url="file://$MODULE_DIR$/test" />
       <excludeFolder url="file://$MODULE_DIR$/test2" />
