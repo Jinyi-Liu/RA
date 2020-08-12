@@ -7,26 +7,25 @@ import threading
 from time import ctime
 
 html_from = './txt2html_files'
+html_with_keywords = './with_keywords'
 
 
 def read_html_names(txt):
     f_open = open(txt, 'r')
     temp = f_open.readlines()
     return [item[:-1] for item in temp]
-# files = os.listdir(html_from)
-# files.sort()
-# files = [item for item in files if item.endswith('_0.html')]
 
-processed_1 = read_html_names('dual_all.txt')
-already_processed_1 = read_html_names('dual_1.txt')
 
-processing_1 = list(set.difference(set(processed_1),set(already_processed_1)))
+files = os.listdir(html_from)
+files.sort()
+files = [item for item in files if item.endswith('_0.html')]
 
-# re.compile('[0-9a-zA-Z\.\,]+ votes')
-# keywords = ['entitled to one vote', 'entitled to \d+(?:\.)?\d+ votes']
-keywords = ['entitled to [0-9a-zA-Z\.\,]+ votes']
+#files = read_html_names('for_test_09azAZ.txt')
+#files = files[::2]  # select one in two
+
+keywords = ['[0-9a-zA-Z\.\,]+ votes per share']
 file = '5187_0.html'
-for file in processed_1:
+for file in files:
     data = open(html_from + '/' + file)
     handle = data.read()
     soup = BeautifulSoup(handle, 'lxml')
@@ -36,7 +35,7 @@ for file in processed_1:
     all_text = ' '.join(soup_doc.get_text().split())
     dual_set = []
     words_set = []
-    f = open('for_test_09azAZ.txt', 'a', encoding='UTF-8')
+    f = open(html_with_keywords+'/'+'keyword1.txt', 'a', encoding='UTF-8')
     for keyword in keywords:
         reg = re.compile(keyword, re.IGNORECASE)
         given_keyword_exist = reg.findall(all_text)
@@ -51,6 +50,6 @@ for file in processed_1:
         for word in words_set[0]:
             f.write(word)
             f.write('\t')
-        f.write('\n')
+        f.write('\n\n')
     f.close()
     print(file)
