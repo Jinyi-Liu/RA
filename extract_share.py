@@ -71,15 +71,15 @@ def tag_with_no_defined_tag(tag_descendants_names, processing_tags, not_wanted_t
     return True
 
 
-def get_paragraph_with_keyword(soup, tag_search, keyword):
+def get_paragraph_with_keyword(soup_para, tag_search, keyword):
     """
     tags: All the tags with name "tag_search"
     tag_descendants_names: Given a tag like <div>(1) it may have children <div>(2) so the list "tags" will
                            saved twice the contents in <div>(2). So the code will search all the descendants of
                            <div>(1) to make sure it has no <div> descendant. "tag_descendants_names" is the list
-                           containing all the descendants'name of <div>(1)
+                           containing all the descendant's of <div>(1)
     """
-    tags = soup.find_all(tag_search)
+    tags = soup_para.find_all(tag_search)
     if tag_search == 'div':
         div_tags_with_no_p = []
         for tag in tags:
@@ -127,7 +127,7 @@ def return_whether_as_a_group(outstanding_num):
             return False
 
 
-def return_condition(CIK, tag_type=None, outstanding_num=[]):
+def return_condition(CIK, tag_type=None, outstanding_num=None):
     index = False
     CIK_list = [356080, 357294]
     CIK_list_1 = [717954, 778164, 788329, 789933]  # outstanding 2 types
@@ -196,22 +196,18 @@ for file in files:
     Example: 16160_1.html
     '''
     keyword_ = 'outstanding'
+
     p_text = get_paragraph_with_keyword(soup, 'p', keyword=keyword_)
     div_text = get_paragraph_with_keyword(soup, 'div', keyword=keyword_)
-    # re_num = re.compile('\d{1,3}(?:\,\d{3})+(?:.\d{2})?')
-    # m = re.compile(r"(\d[\d\s.,]*)\s*?(?:[^%\d])")
     tr_text = get_paragraph_with_keyword(soup, 'tr', keyword='as a group')
 
-    re_num = re.compile('\d{1,3}(?:\,\d{3})+(?:\.\d{2})?|\d{3}(?:\.\d{2})|\d{1,3}(?:\.\d{1,2})')
+    re_num = re.compile('\d{1,3}(?:,\d{3})+(?:\.\d{2})?|\d{3}(?:\.\d{2})|\d{1,3}(?:\.\d{1,2})')
     f = open('./for_copy/{}.txt'.format(str(pre_name)), 'a')
     print_num(p_text, re_num, f, tag_type='p')
     print_num(div_text, re_num, f, tag_type='div')
     print_num(tr_text, re_num, f, tag_type='tr')
+
     f.write(file)
     f.write('\n')
     f.close()
-
-    # print(re_num.findall(p_text)[:100])
-    # print(m.findall(p_text))
-    # print(re_num.findall(div_text)[:5])
     print(file)
