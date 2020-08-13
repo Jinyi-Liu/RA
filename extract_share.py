@@ -1,17 +1,12 @@
 from bs4 import BeautifulSoup
-import bs4
 import re
 import numpy as np
 import os
+from re import sub
 
 html_path = './txt2html_files'
 html_files = os.listdir(html_path)
 html_files.sort()
-
-keyword_ = 'one (1) vote'
-
-
-# tag_search = 'div'
 
 
 def get_tag_with_keyword_in_text(tags, keyword):
@@ -46,7 +41,7 @@ def get_contents(all_tags, keyword):
     else:
         for keyword_sole in keyword:
             tags_with_interest.extend(get_tag_with_keyword_in_text(all_tags, keyword_sole))
-    #
+
     for tag in tags_with_interest:
         tag_contents.append(tag.get_text())
         '''
@@ -105,42 +100,54 @@ def get_paragraph_with_keyword(soup, tag_search, keyword):
     return tag_contents_list
 
 
-from re import sub
 def return_whether_outstanding_share(outstanding_num):
     for _ in outstanding_num:
         if float(sub(r'[^\d.]', '', _)) < 100000:
             return False
     return True
 
-def return_whether_as_a_group(outstanding_num):
-    percent_num=0
-    for _ in outstanding_num:
-        if float(sub(r'[^\d.]', '', _)) <= 101:
-            percent_num+=1
-    if percent_num >=2:
-        return True
-    else:
-        return False
 
-def return_condition(CIK,tag_type=None,outstanding_num=[]):
+def get_value(num_with_comma):
+    return float(sub(r'[^\d.]', '', num_with_comma))
+
+
+def return_whether_as_a_group(outstanding_num):
+    iter_as_a_group_num = iter(outstanding_num)
+    share_num = iter_as_a_group_num.__next__()
+    if len(outstanding_num) >= 4 and get_value(outstanding_num[-1]) <= 101:
+        return True
+    while True:
+        try:
+            per_num = iter_as_a_group_num.__next__()
+            if get_value(share_num) >= 100000 and get_value(per_num) <= 101:
+                return True
+            else:
+                share_num = iter_as_a_group_num.__next__()
+        except StopIteration:
+            return False
+
+
+def return_condition(CIK, tag_type=None, outstanding_num=[]):
     index = False
     CIK_list = [356080, 357294]
-    CIK_list_1 = [717954]
+    CIK_list_1 = [717954, 778164, 788329, 789933]  # outstanding 2 types
+    CIK_list_2 = [796735]  # outstanding 3 types
+    # Below search for ownership percent
+    if tag_type == 'tr' and return_whether_as_a_group(outstanding_num):
+        return True  # stands for continue
+
     if CIK in CIK_list:
-        if tag_type == 'tr':
-            len_nums = len(outstanding_num)
-            if len_nums == 6 or len_nums == 8:
-                index = True  # stands for continue
-        else:
-            if len(outstanding_num) == 2 and return_whether_outstanding_share(outstanding_num):
-                index = True
-    if CIK in CIK_list_1:
-        if tag_type == 'tr':
-            if return_whether_as_a_group(outstanding_num):
-                index = True  # stands for continue
-        else:
-            if len(outstanding_num) == 2:
-                index = True
+        if len(outstanding_num) == 2 and return_whether_outstanding_share(outstanding_num):
+            index = True
+    elif CIK in CIK_list_1:
+        if len(outstanding_num) == 2:
+            index = True
+    elif CIK in CIK_list_2:
+        if len(outstanding_num) == 3:
+            index = True
+    else:
+        return True
+
     return index
 
 
@@ -151,34 +158,22 @@ def print_num(tag_text, re_method, write_text=None, tag_type=None):
     for _ in tag_text:
         outstanding_num = re_method.findall(_)
         if len(outstanding_num) >= 1:
-            # if len(outstanding_num) == 2 or len(outstanding_num) == 4:
             if tag_type == 'tr':
-                print(tag_type)
-                '''
-                356080:
-                if len(outstanding_num)!=6:
-                    if len(outstanding_num) != 8:  
-                        continue
-                '''
-
                 if return_condition(pre_name, tag_type, outstanding_num):
+                    print(tag_type)
                     for num in outstanding_num:
                         write_text.write(num)
                         write_text.write('\t')
                     print(outstanding_num)
             else:
-                print(tag_type)
-                '''
-                356080:
-                if len(outstanding_num) == 2 and ',' in outstanding_num[0]:  
-                '''
-                outstanding_num = [item for item in outstanding_num if float(sub(r'[^\d.]', '', item))>100000]
-                if return_condition(pre_name,tag_type,outstanding_num):
+                outstanding_num = [item for item in outstanding_num if float(sub(r'[^\d.]', '', item)) > 100000]
+                if return_condition(pre_name, tag_type, outstanding_num):
+                    print(tag_type)
                     print(outstanding_num)
                     for num in outstanding_num:
                         write_text.write(num)
                         write_text.write('\t')
-                    #write_text.write('\n')
+                    # write_text.write('\n')
                 else:
                     pass
 
@@ -186,7 +181,7 @@ def print_num(tag_text, re_method, write_text=None, tag_type=None):
 '''
 Extract the outstanding shares from a given html file
 '''
-pre_name = 717954
+pre_name = 796735
 keyword_ = 'outstanding'
 files = [item for item in html_files if item.startswith(str(pre_name) + '_')]
 
