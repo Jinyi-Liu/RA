@@ -180,6 +180,11 @@ def print_num(tag_text, re_method, write_text=None, tag_type=None):
                 if return_condition(pre_name, tag_type, outstanding_num):
                     print(tag_type)
                     for num in outstanding_num:
+                        '''
+                        1. A_num B_num A_pct B_pct *
+                        2. A_num A_pct B_num B_pct *
+                        3. A_num A_unit A_total A_pct B_num B_pct *
+                        '''
                         write_text.write(num)
                         write_text.write('\t')
                     print(outstanding_num)
@@ -192,7 +197,6 @@ def print_num(tag_text, re_method, write_text=None, tag_type=None):
                         write_text.write(num)
                         write_text.write('\t')
                     # write_text.write('\n')
-                    print('')
                 else:
                     pass
 
@@ -229,7 +233,7 @@ for file in files:
     # tr_asa_text = get_paragraph_with_keyword(soup,'tr',keyword='as a')
 
     re_num = re.compile('\d{1,3}(?:,\d{3})+(?:\.\d{2})?|\d{3}(?:\.\d{2})|\d{1,3}(?:\.\d{1,2})')
-    re_tr = re.compile('\d{1,3}(?:,\d{3})+(?:\.\d{2})?|\d{3}(?:\.\d{2})|\d{1,3}(?:\.\d{1,2})|100|\*tr')
+    re_tr = re.compile('\d{1,3}(?:,\d{3})+(?:\.\d{2})?|\d{3}(?:\.\d{2})|\d{1,3}(?:\.\d{1,2})|100|\*')
     f = open('./for_copy/{}.txt'.format(str(pre_name)), 'a')
     print_num(p_text, re_num, f, tag_type='p')
     print_num(div_text, re_num, f, tag_type='div')
