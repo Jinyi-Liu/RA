@@ -8,7 +8,8 @@ html_path = './txt2html_files'
 html_files = os.listdir(html_path)
 html_files.sort()
 
-outstanding_limit=20000
+outstanding_limit = 20000
+
 
 def get_tag_with_keyword_in_text(tags, keyword):
     if keyword == 'one (1) vote':
@@ -16,6 +17,7 @@ def get_tag_with_keyword_in_text(tags, keyword):
     if len(tags) == 0:
         return []
     if tags[0].name == 'tr':
+        '''
         tr_list = []
         tag_iter = iter(tags)
         while True:
@@ -25,6 +27,22 @@ def get_tag_with_keyword_in_text(tags, keyword):
                     tr_list.extend([tag, tag_iter.__next__()])
             except StopIteration:
                 return tr_list
+        '''
+        tags_text = [' '.join(tag.get_text().split()) for tag in tags]
+        index = 0
+        tag_index = []
+        for (tag_text, tag) in zip(tags_text, tags):
+            if re.search(keyword, tag_text, re.IGNORECASE):
+                tag_index.append(index)
+            index += 1
+        tags_return = []
+        for index in tag_index:
+            if index >= 1:
+                tags_return.extend(tags[index-1:index+2])
+            else:
+                tags_return.extend(tags[index:index+2])
+        return tags_return
+
     return [tag for tag in tags if re.search(keyword, ' '.join(tag.get_text().split()), re.IGNORECASE)]
 
 
@@ -43,9 +61,12 @@ def get_contents(all_tags, keyword):
         for keyword_sole in keyword:
             tags_with_interest.extend(get_tag_with_keyword_in_text(all_tags, keyword_sole))
 
+    return [tag.get_text() for tag in tags_with_interest]
+
+    '''
     for tag in tags_with_interest:
         tag_contents.append(tag.get_text())
-        '''
+        
         temp = []
         for child_tag in tag:
             if type(child_tag) == bs4.element.NavigableString:
@@ -53,8 +74,8 @@ def get_contents(all_tags, keyword):
             else:
                 temp.append(child_tag.get_text())
         tag_contents.extend(temp)
-        '''
-    return tag_contents
+    return 
+    '''
 
 
 def tag_with_no_defined_tag(tag_descendants_names, processing_tags, not_wanted_tags):
@@ -81,6 +102,7 @@ def get_paragraph_with_keyword(soup_para, tag_search, keyword):
                            containing all the descendant's of <div>(1)
     """
     tags = soup_para.find_all(tag_search)
+    '''
     if tag_search == 'div':
         div_tags_with_no_p = []
         for tag in tags:
@@ -93,8 +115,11 @@ def get_paragraph_with_keyword(soup_para, tag_search, keyword):
             if tag_with_no_defined_tag(tag_descendants_names, processing_tags='div', not_wanted_tags='p'):
                 div_tags_with_no_p.append(tag)
         tag_contents = get_contents(div_tags_with_no_p, keyword)
+        
     else:
         tag_contents = get_contents(tags, keyword)
+    '''
+    tag_contents = get_contents(tags, keyword)
 
     tag_contents_list = [' '.join(''.join(tag_contents_sole).split()) for tag_contents_sole in tag_contents]
     return tag_contents_list
@@ -112,7 +137,7 @@ def get_value(num_with_comma):
 
 
 def return_whether_as_a_group(outstanding_num, CIK):
-    CIK_list_5 = [1050825]  # as a group table like 1,285,403 2,547,716	 7.2 19,870,718 20.4 42,743
+    CIK_list_5 = [1050825,5133]  # as a group table like 1,285,403 2,547,716	 7.2 19,870,718 20.4 42,743
     CIK_list_6 = [1090727]
     iter_as_a_group_num = iter(outstanding_num)
     share_num = iter_as_a_group_num.__next__()
@@ -138,77 +163,95 @@ def return_whether_as_a_group(outstanding_num, CIK):
             return False
 
 
-pre_name = 1619954
+
+pre_name = 5133
+
 def return_condition(CIK, tag_type=None, outstanding_num=None):
     index = False
     CIK_list = [356080, 357294]
-    CIK_list_1 = [717954, 778164, 788329, 789933,805792,807707,808461,811828,826821,859139,860413,861058,863456,867773,872589]  # outstanding 2 types
-    CIK_list_2 = [796735, 858452, 859735, 880117,1100395,1134061,1439404]  # outstanding 3 types
-    CIK_list_3 = [887733, 911177,922487,923877,924940,944136,1012620,1070534,109483,1095996,1099358,1142417,1166691,1232241,1288469,1288776]  # 2 types and 3 types
-    CIK_list_5 = [1061069,1112263,1344154,1528356]  # 2\3\4 types
-    CIK_list_4 = [928658,1232241,1463833,1468174,1481792,1514514,1541401]  # more than 4 types
+    CIK_list_1 = [717954, 778164, 788329, 789933, 805792, 807707, 808461, 811828, 826821, 859139, 860413, 861058,
+                  863456, 867773, 872589]  # outstanding 2 types
+    CIK_list_2 = [796735, 858452, 859735, 880117, 1100395, 1134061, 1439404]  # outstanding 3 types
+    CIK_list_3 = [887733, 911177, 922487, 923877, 924940, 944136, 1012620, 1070534, 109483, 1095996, 1099358, 1142417,
+                  1166691, 1232241, 1288469, 1288776,3116]  # 2 types and 3 types
+    CIK_list_5 = [1061069, 1112263, 1344154, 1528356]  # 2\3\4 types
+    CIK_list_4 = [928658, 1232241, 1463833, 1468174, 1481792, 1514514, 1541401]  # more than 4 types
     # Below search for ownership percent
     if tag_type == 'tr' and return_whether_as_a_group(outstanding_num, CIK):
         return True  # stands for continue
 
     if CIK in CIK_list_4:
-        if len(outstanding_num) >=4 and return_whether_outstanding_share(outstanding_num):
+        if len(outstanding_num) >= 4 and return_whether_outstanding_share(outstanding_num):
             index = True
     elif CIK in CIK_list_5:
-        if len(outstanding_num) == 2 or (len(outstanding_num)==4) or len(outstanding_num)==5:
+        if len(outstanding_num) == 2 or (len(outstanding_num) == 4) or len(outstanding_num) == 5:
             index = True
     elif CIK in CIK_list_3:
-        if len(outstanding_num) == 2 or (len(outstanding_num)==3 and return_whether_outstanding_share(outstanding_num)):
+        if len(outstanding_num) == 2 or (
+                len(outstanding_num) == 3 and return_whether_outstanding_share(outstanding_num)):
             index = True
     elif CIK in CIK_list_2:
         if len(outstanding_num) == 3:
             index = True
     else:
-        if len(outstanding_num) == 2 and return_whether_outstanding_share(outstanding_num):
+        if len(outstanding_num) >= 2 and return_whether_outstanding_share(outstanding_num):
             index = True
     return index
 
 
-def print_num(tag_text, re_method, write_text=None, tag_type=None):
+def print_num(tag_text, re_method, tag_type=None):
     """
     Need more modification!
     """
+    return_list = []
     for _ in tag_text:
         outstanding_num = re_method.findall(_)
         if len(outstanding_num) >= 1:
             if tag_type == 'tr':
                 if return_condition(pre_name, tag_type, outstanding_num):
-                    print(tag_type)
-                    for num in outstanding_num:
-                        '''
-                        1. A_num B_num A_pct B_pct *
-                        2. A_num A_pct B_num B_pct *
-                        3. A_num A_unit A_total A_pct B_num B_pct *
-                        '''
-                        write_text.write(num)
-                        write_text.write('\t')
-                    print(outstanding_num)
+                    return_list.append(outstanding_num)
             else:
-                outstanding_num = [item for item in outstanding_num if float(sub(r'[^\d.]', '', item)) > outstanding_limit]
+                outstanding_num = [item for item in outstanding_num if
+                                   float(sub(r'[^\d.]', '', item)) > outstanding_limit]
                 if return_condition(pre_name, tag_type, outstanding_num):
-                    print(tag_type)
-                    print(outstanding_num)
-                    for num in outstanding_num:
-                        write_text.write(num)
-                        write_text.write('\t')
-                    # write_text.write('\n')
-                else:
-                    pass
+                    return_list.append(outstanding_num)
+    return return_list
+
+
+
+def to_float(share_list):
+    total_list = []
+    search_max_list = []
+    for _list in share_list:
+        _num_list = []
+        for _num in _list:
+            float_num = float(sub(r'[^\d.]', '', _num))
+            _num_list.append(float_num)
+            search_max_list.append(float_num)
+        total_list.append(_num_list)
+    return total_list, search_max_list
+
+
+def delete_duplicate(tag_list):
+    temp = []
+    for _ in tag_list:
+        if _ not in temp:
+            temp.append(_)
+    return temp
 
 
 '''
 Extract the outstanding shares from a given html file
 '''
+
+
 re_seq = re.compile('\d+')
 def get_seq(file):
     return int(re_seq.findall(file)[1])
-
 keyword_ = 'outstanding'
+
+
+
 files = [item for item in html_files if item.startswith(str(pre_name) + '_')]
 files.sort(key=get_seq)
 
@@ -229,18 +272,38 @@ for file in files:
 
     p_text = get_paragraph_with_keyword(soup, 'p', keyword=keyword_share)
     div_text = get_paragraph_with_keyword(soup, 'div', keyword=keyword_share)
-    tr_text = get_paragraph_with_keyword(soup, 'tr', keyword=[keyword_tr])
+    tr_text = get_paragraph_with_keyword(soup, 'tr', keyword=[keyword_tr, keyword_1053112])
     # tr_asa_text = get_paragraph_with_keyword(soup,'tr',keyword='as a')
 
     re_num = re.compile('\d{1,3}(?:,\d{3})+(?:\.\d{2})?|\d{3}(?:\.\d{2})|\d{1,3}(?:\.\d{1,2})')
     re_tr = re.compile('\d{1,3}(?:,\d{3})+(?:\.\d{2})?|\d{3}(?:\.\d{2})|\d{1,3}(?:\.\d{1,2})|100|\*')
     f = open('./for_copy/{}.txt'.format(str(pre_name)), 'a')
-    print_num(p_text, re_num, f, tag_type='p')
-    print_num(div_text, re_num, f, tag_type='div')
-    print_num(tr_text, re_tr, f, tag_type='tr')
-    #print_num(tr_asa_text,re_num,f,tag_type='tr')
+
+    as_a_group_list = delete_duplicate(print_num(tr_text, re_tr, tag_type='tr'))
+    # Get outstanding share.
+    p_list = print_num(p_text, re_num, tag_type='p')
+    div_list = print_num(div_text, re_num, tag_type='div')
+    str_share_list = delete_duplicate(p_list + div_list)
+    float_share_list, max_list = to_float(str_share_list)
+    max_list.sort(reverse=True)
+
+    out_share_list=[]
+    for _, __ in zip(float_share_list, str_share_list):
+        if max_list[0] in _:
+            out_share_list = __
+            break
+    if len(out_share_list)>=1:
+        for _ in out_share_list:
+            f.write(_)
+            f.write('\t')
+    if len(as_a_group_list) >=1:
+        for _ in as_a_group_list[0]:
+            f.write(_)
+            f.write('\t')
 
     f.write(file)
     f.write('\n')
+    # print_num(tr_asa_text,re_num,f,tag_type='tr')
     f.close()
     print(file)
+
