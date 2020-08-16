@@ -7,7 +7,7 @@ from re import sub
 html_path = './txt2html_files'
 html_files = os.listdir(html_path)
 html_files.sort()
-
+re_seq = re.compile('\d+')
 outstanding_limit = 20000
 
 
@@ -16,34 +16,24 @@ def get_tag_with_keyword_in_text(tags, keyword):
         keyword = '.*one \(\d+\) vote*.'
     if len(tags) == 0:
         return []
+    tags_text = [' '.join(tag.get_text().split()) for tag in tags]
     if tags[0].name == 'tr':
-        '''
-        tr_list = []
-        tag_iter = iter(tags)
-        while True:
-            try:
-                tag = tag_iter.__next__()
-                if re.search(keyword, ' '.join(tag.get_text().split()), re.IGNORECASE):
-                    tr_list.extend([tag, tag_iter.__next__()])
-            except StopIteration:
-                return tr_list
-        '''
-        tags_text = [' '.join(tag.get_text().split()) for tag in tags]
         index = 0
-        tag_index = []
+        tags_index = []
         for (tag_text, tag) in zip(tags_text, tags):
-            if re.search(keyword, tag_text, re.IGNORECASE):
-                tag_index.append(index)
+            if re.search(keyword, tag_text, re.IGNORECASE):  # Locate the tag which contains keyword from its text
+                tags_index.append(index)
             index += 1
         tags_return = []
-        for index in tag_index:
+        for index in tags_index:
             if index >= 1:
-                tags_return.extend(tags[index-1:index+2])
+                tags_return.extend(tags_text[index-1:index+2])  # Get the previous and the next tag.
             else:
-                tags_return.extend(tags[index:index+2])
+                tags_return.extend(tags_text[index:index+2])  # Special case.
         return tags_return
-
-    return [tag for tag in tags if re.search(keyword, ' '.join(tag.get_text().split()), re.IGNORECASE)]
+    else:
+        # Not tr tag.
+        return [tag_text for tag_text in tags_text if re.search(keyword, tag_text, re.IGNORECASE)]
 
 
 def get_contents(all_tags, keyword):
@@ -53,7 +43,6 @@ def get_contents(all_tags, keyword):
     keyword: like ['as a group','as a Group'] but this situation is solved by re.IGNORECASE which will ignore the case.
     """
     tags_with_interest = []
-    tag_contents = []
     # To get the tags with keyword in their text
     if type(keyword) != list:
         tags_with_interest.extend(get_tag_with_keyword_in_text(all_tags, keyword))
@@ -61,21 +50,7 @@ def get_contents(all_tags, keyword):
         for keyword_sole in keyword:
             tags_with_interest.extend(get_tag_with_keyword_in_text(all_tags, keyword_sole))
 
-    return [tag.get_text() for tag in tags_with_interest]
-
-    '''
-    for tag in tags_with_interest:
-        tag_contents.append(tag.get_text())
-        
-        temp = []
-        for child_tag in tag:
-            if type(child_tag) == bs4.element.NavigableString:
-                temp.append(child_tag)
-            else:
-                temp.append(child_tag.get_text())
-        tag_contents.extend(temp)
-    return 
-    '''
+    return tags_with_interest
 
 
 def tag_with_no_defined_tag(tag_descendants_names, processing_tags, not_wanted_tags):
@@ -96,33 +71,12 @@ def tag_with_no_defined_tag(tag_descendants_names, processing_tags, not_wanted_t
 def get_paragraph_with_keyword(soup_para, tag_search, keyword):
     """
     tags: All the tags with name "tag_search"
-    tag_descendants_names: Given a tag like <div>(1) it may have children <div>(2) so the list "tags" will
-                           saved twice the contents in <div>(2). So the code will search all the descendants of
-                           <div>(1) to make sure it has no <div> descendant. "tag_descendants_names" is the list
-                           containing all the descendant's of <div>(1)
     """
     tags = soup_para.find_all(tag_search)
-    '''
-    if tag_search == 'div':
-        div_tags_with_no_p = []
-        for tag in tags:
-            tag_descendants_names = []
-            for _ in tag.descendants:
-                tag_descendants_names.append(_.name)
-            # To vectoring the list and using == method
-            tag_descendants_names = np.array(list(set(tag_descendants_names)))
-            # Delete div tag with children (p tags) in it so as to not search repeatedly
-            if tag_with_no_defined_tag(tag_descendants_names, processing_tags='div', not_wanted_tags='p'):
-                div_tags_with_no_p.append(tag)
-        tag_contents = get_contents(div_tags_with_no_p, keyword)
-        
-    else:
-        tag_contents = get_contents(tags, keyword)
-    '''
-    tag_contents = get_contents(tags, keyword)
 
-    tag_contents_list = [' '.join(''.join(tag_contents_sole).split()) for tag_contents_sole in tag_contents]
-    return tag_contents_list
+    tags_contents = get_contents(tags, keyword)
+
+    return tags_contents
 
 
 def return_whether_outstanding_share(outstanding_num):
@@ -133,11 +87,14 @@ def return_whether_outstanding_share(outstanding_num):
 
 
 def get_value(num_with_comma):
-    return float(sub(r'[^\d.]', '', num_with_comma))
+    if num_with_comma == '*':
+        return 0
+    else:
+        return float(sub(r'[^\d.]', '', num_with_comma))
 
 
 def return_whether_as_a_group(outstanding_num, CIK):
-    CIK_list_5 = [1050825,5133]  # as a group table like 1,285,403 2,547,716	 7.2 19,870,718 20.4 42,743
+    CIK_list_5 = [1050825]  # as a group table like 1,285,403 2,547,716	 7.2 19,870,718 20.4 42,743
     CIK_list_6 = [1090727]
     iter_as_a_group_num = iter(outstanding_num)
     share_num = iter_as_a_group_num.__next__()
@@ -146,10 +103,13 @@ def return_whether_as_a_group(outstanding_num, CIK):
             return True
         elif len(outstanding_num) >= 3 and get_value(outstanding_num[-1]) <= 101:
             return True
+        elif len(outstanding_num) == 2 and get_value(outstanding_num[0])>outstanding_limit and get_value(outstanding_num[1])<=105:
+            return True
         else:
             return False
     elif len(outstanding_num) >= 3 and get_value(outstanding_num[-1]) <= 101:
         return True
+
     while True:
         try:
             per_num = iter_as_a_group_num.__next__()
@@ -164,8 +124,7 @@ def return_whether_as_a_group(outstanding_num, CIK):
 
 
 
-pre_name = 5133
-
+pre_name = 6948
 def return_condition(CIK, tag_type=None, outstanding_num=None):
     index = False
     CIK_list = [356080, 357294]
@@ -218,7 +177,6 @@ def print_num(tag_text, re_method, tag_type=None):
     return return_list
 
 
-
 def to_float(share_list):
     total_list = []
     search_max_list = []
@@ -240,31 +198,31 @@ def delete_duplicate(tag_list):
     return temp
 
 
+def get_seq(file_name):
+    return int(re_seq.findall(file_name)[1])
+
+
 '''
 Extract the outstanding shares from a given html file
 '''
-
-
-re_seq = re.compile('\d+')
-def get_seq(file):
-    return int(re_seq.findall(file)[1])
-keyword_ = 'outstanding'
-
-
-
 files = [item for item in html_files if item.startswith(str(pre_name) + '_')]
 files.sort(key=get_seq)
+
+
+def write_to_file(num_list, file_to_write):
+    for _ in num_list:
+        file_to_write.write(_)
+        file_to_write.write('\t')
+
+#files=['5133_1.html']
+
 
 for file in files:
     data = open(html_path + '/' + file)
     handle = data.read()
     soup = BeautifulSoup(handle, 'lxml')
     soup = soup.find('document')
-    '''
-    Solved:
-    tag <p> with something like <font>****</font> in it.
-    Example: 16160_1.html
-    '''
+
     keyword_share = 'outstanding'
     keyword_tr = 'as a group'
     # keyword_1023128 = 'All current executive officers and directors as a'
@@ -273,7 +231,6 @@ for file in files:
     p_text = get_paragraph_with_keyword(soup, 'p', keyword=keyword_share)
     div_text = get_paragraph_with_keyword(soup, 'div', keyword=keyword_share)
     tr_text = get_paragraph_with_keyword(soup, 'tr', keyword=[keyword_tr, keyword_1053112])
-    # tr_asa_text = get_paragraph_with_keyword(soup,'tr',keyword='as a')
 
     re_num = re.compile('\d{1,3}(?:,\d{3})+(?:\.\d{2})?|\d{3}(?:\.\d{2})|\d{1,3}(?:\.\d{1,2})')
     re_tr = re.compile('\d{1,3}(?:,\d{3})+(?:\.\d{2})?|\d{3}(?:\.\d{2})|\d{1,3}(?:\.\d{1,2})|100|\*')
@@ -292,15 +249,12 @@ for file in files:
         if max_list[0] in _:
             out_share_list = __
             break
-    if len(out_share_list)>=1:
-        for _ in out_share_list:
-            f.write(_)
-            f.write('\t')
-    if len(as_a_group_list) >=1:
-        for _ in as_a_group_list[0]:
-            f.write(_)
-            f.write('\t')
-
+    if len(out_share_list) >= 1:
+        write_to_file(out_share_list, f)
+    if len(as_a_group_list) >= 1:
+        write_to_file(as_a_group_list[0], f)
+        if len(as_a_group_list) >= 2:
+            write_to_file(as_a_group_list[1], f)
     f.write(file)
     f.write('\n')
     # print_num(tr_asa_text,re_num,f,tag_type='tr')

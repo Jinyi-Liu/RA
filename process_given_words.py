@@ -7,6 +7,7 @@ import threading
 from time import ctime
 
 html_from = './txt2html_files'
+html_read = './read_html'
 html_with_keywords = './with_keywords'
 
 
@@ -16,16 +17,24 @@ def read_html_names(txt):
     return [item[:-1] for item in temp]
 
 
-files = os.listdir(html_from)
-files.sort()
-files = [item for item in files if item.endswith('_0.html')]
+all_files = os.listdir(html_from)
+all_files.sort()
+all_files = [item for item in all_files if item.endswith('_0.html')]
 
-#files = read_html_names('for_test_09azAZ.txt')
-#files = files[::2]  # select one in two
+processed_files = open(html_with_keywords+'/'+'keyword1.txt','r').readlines()
+processed_files = processed_files[::3]
+processed_files = [item[:-1] for item in processed_files]
 
-keywords = ['[0-9a-zA-Z\.\,]+ votes per share']
-file = '5187_0.html'
-for file in files:
+checked_files = os.listdir(html_read)
+checked_files.sort()
+checked_files = [item for item in checked_files if item.endswith('_0.html')]
+
+processing_files = list(set.difference(set(all_files),set.union(set(processed_files), set(checked_files))))
+processing_files.sort()
+
+# keywords = ['[0-9a-zA-Z\.\,]+ votes per share'] keyword1
+keywords = []
+for file in processing_files:
     data = open(html_from + '/' + file)
     handle = data.read()
     soup = BeautifulSoup(handle, 'lxml')
@@ -35,7 +44,7 @@ for file in files:
     all_text = ' '.join(soup_doc.get_text().split())
     dual_set = []
     words_set = []
-    f = open(html_with_keywords+'/'+'keyword1.txt', 'a', encoding='UTF-8')
+    f = open(html_with_keywords+'/'+'keyword2.txt', 'a', encoding='UTF-8')
     for keyword in keywords:
         reg = re.compile(keyword, re.IGNORECASE)
         given_keyword_exist = reg.findall(all_text)
