@@ -92,7 +92,6 @@ def get_paragraph_with_keyword(soup_para, tag_search, keyword):
             # Delete div tag with children (p tags) in it so as to not search repeatedly
             if tag_with_no_defined_tag(tag_descendants_names, processing_tags='div', not_wanted_tags='p'):
                 div_tags_with_no_p.append(tag)
-
         tag_contents = get_contents(div_tags_with_no_p, keyword)
     else:
         tag_contents = get_contents(tags, keyword)
@@ -112,10 +111,19 @@ def get_value(num_with_comma):
     return float(sub(r'[^\d.]', '', num_with_comma))
 
 
-def return_whether_as_a_group(outstanding_num):
+def return_whether_as_a_group(outstanding_num, CIK):
+    CIK_list_5 = [1050825]  # as a group table like 1,285,403 2,547,716	 7.2 19,870,718 20.4 42,743
+    CIK_list_6 = [1090727]
     iter_as_a_group_num = iter(outstanding_num)
     share_num = iter_as_a_group_num.__next__()
-    if len(outstanding_num) >= 3 and get_value(outstanding_num[-1]) <= 101:
+    if CIK in CIK_list_5:
+        if len(outstanding_num) >= 3 and get_value(outstanding_num[-2]) <= 101:
+            return True
+        elif len(outstanding_num) >= 3 and get_value(outstanding_num[-1]) <= 101:
+            return True
+        else:
+            return False
+    elif len(outstanding_num) >= 3 and get_value(outstanding_num[-1]) <= 101:
         return True
     while True:
         try:
@@ -130,20 +138,24 @@ def return_whether_as_a_group(outstanding_num):
             return False
 
 
-pre_name = 1023128
+pre_name = 1619954
 def return_condition(CIK, tag_type=None, outstanding_num=None):
     index = False
     CIK_list = [356080, 357294]
     CIK_list_1 = [717954, 778164, 788329, 789933,805792,807707,808461,811828,826821,859139,860413,861058,863456,867773,872589]  # outstanding 2 types
-    CIK_list_2 = [796735, 858452, 859735, 880117]  # outstanding 3 types
-    CIK_list_3 = [887733, 911177,922487,923877,924940,944136,1012620]  # 2 types and 3 types
-    CIK_list_4 = [928658]  # more than 4 types
+    CIK_list_2 = [796735, 858452, 859735, 880117,1100395,1134061,1439404]  # outstanding 3 types
+    CIK_list_3 = [887733, 911177,922487,923877,924940,944136,1012620,1070534,109483,1095996,1099358,1142417,1166691,1232241,1288469,1288776]  # 2 types and 3 types
+    CIK_list_5 = [1061069,1112263,1344154,1528356]  # 2\3\4 types
+    CIK_list_4 = [928658,1232241,1463833,1468174,1481792,1514514,1541401]  # more than 4 types
     # Below search for ownership percent
-    if tag_type == 'tr' and return_whether_as_a_group(outstanding_num):
+    if tag_type == 'tr' and return_whether_as_a_group(outstanding_num, CIK):
         return True  # stands for continue
 
     if CIK in CIK_list_4:
         if len(outstanding_num) >=4 and return_whether_outstanding_share(outstanding_num):
+            index = True
+    elif CIK in CIK_list_5:
+        if len(outstanding_num) == 2 or (len(outstanding_num)==4) or len(outstanding_num)==5:
             index = True
     elif CIK in CIK_list_3:
         if len(outstanding_num) == 2 or (len(outstanding_num)==3 and return_whether_outstanding_share(outstanding_num)):
@@ -180,6 +192,7 @@ def print_num(tag_text, re_method, write_text=None, tag_type=None):
                         write_text.write(num)
                         write_text.write('\t')
                     # write_text.write('\n')
+                    print('')
                 else:
                     pass
 
@@ -187,9 +200,13 @@ def print_num(tag_text, re_method, write_text=None, tag_type=None):
 '''
 Extract the outstanding shares from a given html file
 '''
+re_seq = re.compile('\d+')
+def get_seq(file):
+    return int(re_seq.findall(file)[1])
 
 keyword_ = 'outstanding'
 files = [item for item in html_files if item.startswith(str(pre_name) + '_')]
+files.sort(key=get_seq)
 
 for file in files:
     data = open(html_path + '/' + file)
@@ -204,14 +221,15 @@ for file in files:
     keyword_share = 'outstanding'
     keyword_tr = 'as a group'
     # keyword_1023128 = 'All current executive officers and directors as a'
+    keyword_1053112 = "All executive officers and directors"
 
     p_text = get_paragraph_with_keyword(soup, 'p', keyword=keyword_share)
     div_text = get_paragraph_with_keyword(soup, 'div', keyword=keyword_share)
-    tr_text = get_paragraph_with_keyword(soup, 'tr', keyword=keyword_tr)
+    tr_text = get_paragraph_with_keyword(soup, 'tr', keyword=[keyword_tr])
     # tr_asa_text = get_paragraph_with_keyword(soup,'tr',keyword='as a')
 
     re_num = re.compile('\d{1,3}(?:,\d{3})+(?:\.\d{2})?|\d{3}(?:\.\d{2})|\d{1,3}(?:\.\d{1,2})')
-    re_tr = re.compile('\d{1,3}(?:,\d{3})+(?:\.\d{2})?|\d{3}(?:\.\d{2})|\d{1,3}(?:\.\d{1,2})|100')
+    re_tr = re.compile('\d{1,3}(?:,\d{3})+(?:\.\d{2})?|\d{3}(?:\.\d{2})|\d{1,3}(?:\.\d{1,2})|100|\*tr')
     f = open('./for_copy/{}.txt'.format(str(pre_name)), 'a')
     print_num(p_text, re_num, f, tag_type='p')
     print_num(div_text, re_num, f, tag_type='div')
