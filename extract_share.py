@@ -27,7 +27,8 @@ def get_tag_with_keyword_in_text(tags, keyword):
         tags_return = []
         for index in tags_index:
             if index >= 1:
-                tags_return.extend(tags_text[index-1:index+2])  # Get the previous and the next tag.
+                #tags_return.extend(tags_text[index-1:index+1])  # Get the previous and the next tag.
+                tags_return.extend([tags_text[index]])
             else:
                 tags_return.extend(tags_text[index:index+2])  # Special case.
         return tags_return
@@ -124,7 +125,7 @@ def return_whether_as_a_group(outstanding_num, CIK):
 
 
 
-pre_name = 6948
+pre_name = input()
 def return_condition(CIK, tag_type=None, outstanding_num=None):
     index = False
     CIK_list = [356080, 357294]
@@ -214,8 +215,8 @@ def write_to_file(num_list, file_to_write):
         file_to_write.write(_)
         file_to_write.write('\t')
 
-#files=['5133_1.html']
-
+# files=['5133_1.html']
+# files=['16918_1.html']
 
 for file in files:
     data = open(html_path + '/' + file)

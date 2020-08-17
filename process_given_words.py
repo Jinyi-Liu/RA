@@ -21,19 +21,22 @@ all_files = os.listdir(html_from)
 all_files.sort()
 all_files = [item for item in all_files if item.endswith('_0.html')]
 
-processed_files = open(html_with_keywords+'/'+'keyword1.txt','r').readlines()
+processed_files = open(html_with_keywords + '/' + 'keyword1.txt', 'r').readlines()
 processed_files = processed_files[::3]
-processed_files = [item[:-1] for item in processed_files]
+processed_files1 = open(html_with_keywords + '/' + 'keyword2.txt', 'r').readlines()
+processed_files1 = processed_files1[::3]
+processed_files = [item[:-1] for item in processed_files+processed_files1]
 
 checked_files = os.listdir(html_read)
 checked_files.sort()
 checked_files = [item for item in checked_files if item.endswith('_0.html')]
 
-processing_files = list(set.difference(set(all_files),set.union(set(processed_files), set(checked_files))))
+processing_files = list(set.difference(set(all_files), set.union(set(processed_files), set(checked_files))))
 processing_files.sort()
 
 # keywords = ['[0-9a-zA-Z\.\,]+ votes per share'] keyword1
-keywords = []
+keywords = [' 5 votes','five votes',]
+# processing_files =['67517_0.html']
 for file in processing_files:
     data = open(html_from + '/' + file)
     handle = data.read()
@@ -44,7 +47,7 @@ for file in processing_files:
     all_text = ' '.join(soup_doc.get_text().split())
     dual_set = []
     words_set = []
-    f = open(html_with_keywords+'/'+'keyword2.txt', 'a', encoding='UTF-8')
+    f = open(html_with_keywords + '/' + 'keyword2.txt', 'a', encoding='UTF-8')
     for keyword in keywords:
         reg = re.compile(keyword, re.IGNORECASE)
         given_keyword_exist = reg.findall(all_text)
@@ -53,7 +56,7 @@ for file in processing_files:
             dual_set.append(True)
         else:
             dual_set.append(False)
-    if len(dual_set) > 0 and (np.array(dual_set) == True).all():
+    if len(dual_set) > 0 and (np.array(dual_set) == True).any():
         f.write(file)
         f.write('\n')
         for word in words_set[0]:
