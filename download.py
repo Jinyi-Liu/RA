@@ -1,7 +1,7 @@
 import requests
 import pandas as pd
 import datetime as dt
-
+'''
 data = pd.read_excel('naocan.xlsx')
 data['CIK'] = data['CIK'].astype(int)
 data['FileDate'] = pd.TimedeltaIndex(data['FileDate'], unit='d') + dt.datetime(1900, 1, 1)
@@ -20,3 +20,6 @@ for code in CIK[13:26]:
             f.write(r.content)
         i += 1
     print(code)
+'''
+temp = open('10k_pre_url.txt','r')
+pre_url = temp.readlines(temp)
