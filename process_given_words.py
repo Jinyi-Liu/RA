@@ -49,7 +49,7 @@ processing_files = list(set.difference(set(all_files), set.union(set(processed_f
 processing_files.sort()
 # processing_files = ['1012019_0.html']
 # keywords = ['[0-9a-zA-Z\.\,]+ votes per share'] keyword1
-keywords = ['\(10\) vote']
+keywords = ['\(ten\) votes']
 # processing_files = return_keywords_files('keyword3.txt')
 # processing_files =['67517_0.html']
 for file in processing_files:
