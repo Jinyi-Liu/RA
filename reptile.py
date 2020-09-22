@@ -15,7 +15,7 @@ with open('CIK.txt','rb') as fp:
 urlpage = "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK={" \
           "}&type=10-k&dateb=20151231&owner=exclude&count=40&search_text= "
 
-f = open('10k_pre_url.txt','a')
+
 urls_set = []
 for code in CIK[:]:
     print(code)
@@ -31,15 +31,14 @@ for code in CIK[:]:
     for q in results:
         url = q.get('href')
         if url.startswith('/Archives'):
-            f.write(url)
-            f.write('\n')
             urls.append(url)
     urls_set.append(urls)
-f.close()
+with open('pre_url.pk','wb') as fp:
+    pickle.dump(urls_set, fp)
 
 
-
-f = open('10k_url.txt','a')
+with open('pre_url.pk','rb') as fp:
+    urls_set = pickle.load(fp)
 urls_10k = []
 for urls in urls_set:
     _urls = [url for url in urls if url.startswith('/Archives')]
@@ -52,11 +51,11 @@ for urls in urls_set:
         a = results[0]
         if not a.get('href').endswith('.txt') or not a.get('href').endswith('.htm'):
             url = results[-1].get('href')
-        url = results.get('href')
+        else:
+            url = results[0].get('href')
         print(results)
-        f.write(url)
-        f.write('\n')
         urls_10k.append(url)
-f.close()
 
 
+with open('10-K_url.pk','wb') as fp:
+    pickle.dump(urls_10k, fp)
