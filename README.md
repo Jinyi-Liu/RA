@@ -30,5 +30,5 @@ VOTEB: 5
 Class A num: 184,283 pct: 3.1%  
 Class B num: 42,856,854,100 pct: 100.0%  
 Votepct = 97.35% (Given by DEF-14A)  
-![equ](https://latex.codecogs.com/gif.latex?log(y)=\beta_0&space;&plus;&space;\beta_1&space;x&space;&plus;&space;u)  
-Manual computed voting power = $\frac{ClassAnum\*VoteA+ClassBnum\*VoteB}{ClassAnum/ClassApct\*VoteA+ClassB/ClassBpct\*VoteB}$=97.38%
+The method using now
+: ![equ](https://latex.codecogs.com/gif.latex?\frac{ClassAnum*VoteA&plus;ClassBnum*VoteB}{ClassAnum/ClassApct*VoteA&plus;ClassB/ClassBpct*VoteB}=97.38%)  
