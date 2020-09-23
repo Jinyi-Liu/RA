@@ -34,13 +34,15 @@ url_prefix = 'https://sec.gov'
 code_pre = re.findall('\d+', urls[0])[0]
 i = 0
 for url in urls:
+    code_now = re.findall('\d+', url)[0]
+
     if code_pre != code_now:
         i = 0
-    code_now = re.findall('\d+', url)[0]
     r = requests.get(url_prefix + url)
     with open("./10k/{}_{}.html".format(code_now,i), 'wb') as f:
         f.write(r.content)
     i += 1
     code_pre = code_now
+
 
 
