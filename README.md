@@ -20,6 +20,9 @@ No dividend paid for common stock.
 ### 33113
 Only on liquidation could the preferred stock shareholder receive the dividends.
 
+### 39648 G&K SERVICES INC
+Conversed all Class B shares to Class A shares in 2005.
+
 ## 2. Process Method
 ### 2.1 Description
 
@@ -42,8 +45,10 @@ The method using now
 |SHAOUTA|SHAOUTB|VOTEA|VOTEB|CLASSANUM|CLASSAPCT|CLASSBNUM|CLASSBPCT|VOTEPCT|DIVA|DIVB|CASHPCT|
 |:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 |94,045,702|4,884,557 |	1.00 | 10.00 |3,694,450|3.90 | 4,313,732 | 88.30 |  32.70|0.30|0.15|Not Given|
-The data of above is given by DEF-14A.
-Cash-flow rights = (3,694,450\*0.30+4,313,732\*0.15)/(94,045,708\*0.30+4,884,557\*0.15) = 6.06%  
+The data of above is given by DEF-14A.  
+Cash-flow rights A= (3,694,450\*0.30+4,313,732\*0.15)/(94,045,708\*0.30+4,884,557\*0.15) = 6.06%  
+Cash-flow rights B= (3,694,450\*0.30+4,313,732\*0.15)/(3,694,450/3.90\*0.30+4,313,732/88.3\*0.15) = 6.02%  
+Cash-flow rights C= (94,045,708\*3.90\*0.30+4,884,557\*88.30\*0.15)/(94,045,708\*0.30+4,884,557\*0.15) = 6.04%  
 Votes = 3,694,450\*1 + 4,313,732\*10 = 46,831,770  
 Total Votes A = (3,694,450/3.90+4,313,732/88.30)\*100 = 143,582,624  
 Total Votes B = (94,045,072\*1+4,884,557\*10) = 142,891,272  
