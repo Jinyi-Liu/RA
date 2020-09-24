@@ -44,6 +44,9 @@ share on each of our Class A Common Stock and Class B Common Stock.
 ### 50471 
 Don't know the per share dividend of preferred stock and the common stock has never paid dividends.
 
+### 52532
+Common stock and preferred stock. One vote for each share. No dividend data in 10-K of both types of stock.
+
 ## 2. Process Method
 ### 2.1 Description
 
