@@ -2,7 +2,7 @@ import requests
 import pandas as pd
 import datetime as dt
 '''
-data = pd.read_excel('naocan.xlsx')
+
 data['CIK'] = data['CIK'].astype(int)
 data['FileDate'] = pd.TimedeltaIndex(data['FileDate'], unit='d') + dt.datetime(1900, 1, 1)
 data['FileDate'] = data['FileDate'].dt.date

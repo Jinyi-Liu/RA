@@ -23,25 +23,44 @@ Only on liquidation could the preferred stock shareholder receive the dividends.
 ### 39648 G&K SERVICES INC
 Conversed all Class B shares to Class A shares in 2005.
 
+### 43196 GRAY TELEVISION INC
+Assumes equal dividends as before 2008.
+
+### 43920
+More than 2003-2007 as in the raw excel.  
+
+### 46640
+Little preferred stock.
+
+### 49401
+2004 Special cash dividend?  
+Commencing with the quarterly dividend declared on February 17, 2004, the Board of Directors increased the regular 
+quarterly dividend on our Class A Common Stock to $0.050 per share and the regular quarterly dividend on our Class B 
+Common Stock to $0.055 per share. Following the dividends declared on February 17, 2004, the Board of Directors declared 
+regular quarterly dividends in 2004 on May 19, 2004, August 2, 2004 and November 4, 2004, each in the amount announced 
+on February 17, 2004. Also, on February 17, 2004, our Board of Directors declared a special cash dividend of $4.00 per 
+share on each of our Class A Common Stock and Class B Common Stock. 
+
+### 50471 
+Don't know the per share dividend of preferred stock and the common stock has never paid dividends.
+
 ## 2. Process Method
 ### 2.1 Description
 
 
 ### 2.2 Voting Example
 #### 2.2.1 1611988 Fifth Street Asset Management Inc. 2015-04-23
-SHAOUTA: 6,000,033  
-SHAOUTB: 42,856,854  
-VOTEA: 1  
-VOTEB: 5  
-Class A num: 184,283 pct: 3.1%  
-Class B num: 42,856,854,100 pct: 100.0%  
-Votepct = 97.35% (Given by DEF-14A)  
-The method using now
+|SHAOUTA|SHAOUTB|VOTEA|VOTEB|CLASSANUM|CLASSAPCT|CLASSBNUM|CLASSBPCT|VOTEPCT|
+|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
+|6,000,033 |42,856,854|1|5|184,283|3.10|42,854,854|100.00|97.35|  
+
+
+The method of computing voting rights using now
 : ![equ](https://latex.codecogs.com/gif.latex?\frac{ClassAnum*VoteA&plus;ClassBnum*VoteB}{ClassAnum/ClassApct*VoteA&plus;ClassB/ClassBpct*VoteB}=97.38%)  
 
 
 ### 2.3 Cash-flow Example
-##### 2.3.1 34115 CLAIRES STORES INC 2006-05-25
+#### 2.3.1 *34115* *CLAIRES STORES INC* 2006-05-25
 |SHAOUTA|SHAOUTB|VOTEA|VOTEB|CLASSANUM|CLASSAPCT|CLASSBNUM|CLASSBPCT|VOTEPCT|DIVA|DIVB|CASHPCT|
 |:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 |94,045,702|4,884,557 |	1.00 | 10.00 |3,694,450|3.90 | 4,313,732 | 88.30 |  32.70|0.30|0.15|Not Given|  
