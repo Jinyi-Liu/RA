@@ -47,6 +47,10 @@ Don't know the per share dividend of preferred stock and the common stock has ne
 ### 52532
 Common stock and preferred stock. One vote for each share. No dividend data in 10-K of both types of stock.
 
+### 63814
+Don't know the way to deal with the dividend of common stock and preferred stock.
+The Company has not declared any dividends on its capital stock.
+
 ## 2. Process Method
 ### 2.1 Description
 
