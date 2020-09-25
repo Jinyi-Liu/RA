@@ -72,8 +72,53 @@ Common Stock and Series A Preferred Stock.
 No cash dividends were declared or paid by the Company during 2004 or 2003, and the Company does not intend to 
 pay dividends on its Common Stock or Series A Preferred Stock in the foreseeable 
 
-### 
+### 88948
+5 types of voting stocks. 
 
+### 89261
+Class A stock and Class B stock have same voting power.  
+EXX has not declared nor paid any dividends during the last two fiscal years. EXX does not 
+intend to pay any cash dividends in the foreseeable future.
+
+### 92103
+The holders of the Edison International Common Stock have the right to cast a total of 325,796,087 votes. 
+The holders of the SCE Cumulative Preferred Stock have the right to cast a total of 30,901,188 votes and the 
+holder of the SCE Common Stock, Edison International, has the right to cast a total of 434,888,104 votes. 
+Voting together as a class, the SCE shareholders have the right to cast a total of 465,789,292 votes.
+
+### 94344
+More years than in the raw excel and Class B Stock may not be paid any dividends.  
+The certificate of incorporation provides that no cash dividends may be paid on its Class B Common Stock. 
+
+### 96338
+Ignore 1,010 shares of Class A Preferred Stock which entitled to a total of 505 votes.
+
+### 96831
+The current directors and current executive officers as a group held less than 1% of both types of shares.
+
+### 97052
+4 types of voting stocks.  
+The Company historically has not paid cash dividends on its common stock.  The Company intends to retain all of its 
+earnings for the future operation and growth of its business and does not intend to pay cash dividends in the foreseeable future.  
+Additionally, certain covenants in our financing agreements restrict the payment of cash dividends.
+
+### 99106
+No data of the dividend of the Series A Convertible Preferred Stock in the 10-K file.
+
+### 100493
+Interesting. Sudden change of insider holdings of Class B Stock in 2011.
+
+### 101538
+ (1) 65,933,564 shares of common stock, (2) 177,904 shares of  Series C preferred stock, and 
+ (3) 1,751, 005 shares of Series D preferred stock. The Company's Series B preferred stock does not have voting rights.   
+We have not declared or paid any dividends to our stockholders during the last five years and do not anticipate paying dividends 
+on our common stock in the foreseeable future.  Instead, we expect to retain earnings for the operation and expansion of our business.
+Can not determined the cash-flow rights.
+
+ 
+ 
+ 
+ 
 ## 2. Process Method
 ### 2.1 Description
 
