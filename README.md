@@ -51,6 +51,29 @@ Common stock and preferred stock. One vote for each share. No dividend data in 1
 Don't know the way to deal with the dividend of common stock and preferred stock.
 The Company has not declared any dividends on its capital stock.
 
+### 64472
+Common stock and Class B stock.  
+No dividend data.  
+Same voting right one any matter to be presented at the Annual Meeting. 
+The holders of Common Stock and Class B Stock will vote separately as a class on the election of Directors. 
+
+### 74046
+More years than in the raw excel.
+
+### 75208
+Hold less than 0.1% of the outstanding shares.
+
+### 78966
+Common Stock; Series Three Preferred Stock.  
+No cash dividends on common stock have been paid during any year.
+
+### 83490
+Common Stock and Series A Preferred Stock.  
+No cash dividends were declared or paid by the Company during 2004 or 2003, and the Company does not intend to 
+pay dividends on its Common Stock or Series A Preferred Stock in the foreseeable 
+
+### 
+
 ## 2. Process Method
 ### 2.1 Description
 
