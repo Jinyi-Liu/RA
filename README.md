@@ -115,7 +115,8 @@ We have not declared or paid any dividends to our stockholders during the last f
 on our common stock in the foreseeable future.  Instead, we expect to retain earnings for the operation and expansion of our business.
 Can not determined the cash-flow rights.
 
- 
+### 101830
+Incorporation issue about the voting stocks (FON Stock and PCS Stock) which I can't determined.
  
  
  
