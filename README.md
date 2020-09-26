@@ -118,8 +118,49 @@ Can not determined the cash-flow rights.
 ### 101830
 Incorporation issue about the voting stocks (FON Stock and PCS Stock) which I can't determined.
  
- 
- 
+### 103595
+Scale the proportion of dividend to 1:0.65. 
+### 104889
+Seven by the holders of Class A Stock voting separately as a class and three by the holders of Class B Stock voting 
+separately as a class.  
+Both classes of the Company's Common Stock participate equally as to dividends. 
+### 106532 *
+All outstanding shares of Class B common stock converted into common stock on July 1, 2007.
+### 109657
+Common Stock; Series B C F Preferred Stock.
+### 110027
+Class A Common Stock and  Class B Common Stock have same voting rights and cash-flow rights.
+### 205520
+Merge.
+### 216039
+Dividends. Merge.
+### 317158
+The Company has paid no dividends in the past and does not consider likely the payment of any dividends in the foreseeable future.  
+The Class B preferred shares carry no dividends, are non-convertible and entitle the holder to two votes per share. 
+99,400 of the Class B preferred shares have been issued and are outstanding.
+### 318259
+Like the above.
+### 318306 ?
+Unless a holder of Series A Preferred Stock elects otherwise, its ability to convert its Series A Preferred Stock into 
+common stock or to vote on an as-if-converted to common stock basis is restricted to the extent that such conversion 
+would result in the holder owning more than **4.99%** of our issued and outstanding common stock or voting together with 
+the common stock on an as-if-converted to common stock basis in respect of more than 4.99% of our issued and outstanding 
+common stock. Eight holders of our Series A Preferred Stock have elected not to be governed by these restrictions, 
+although we have entered into an agreement with one such holder whereby that holder's ability to convert or vote 
+its shares of Series A Preferred Stock will not be subject to a beneficial ownership cap of 4.99%. Consequently, 
+giving effect to the beneficial ownership cap restrictions, the Series A Preferred Stock issued and outstanding 
+as of March 28, 2008 is convertible into **11,666,195** shares of common stock and the holders of the Series A Preferred Stock 
+vote on an as-converted basis with the holders of our common stock. 
+The Company has no other voting securities.
+
+
+
+
+
+
+
+
+
 ## 2. Process Method
 ### 2.1 Description
 
