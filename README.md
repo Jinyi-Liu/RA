@@ -6,6 +6,10 @@ Call option holders are not entitled to regular quarterly dividends. So when I c
 numbers from DEF-14A "Security Ownership of Certain Beneficial Owners and Management" shall I 
 subtract those shares of common stock included in the above form which may be acquired upon the exercise of options that 
 are exercisable?
+### 1.2 Preferred Stock
+However, pursuant to the terms of the Designation of Rights and Preferences of the Series B preferred stock, 
+he maximum number of votes that each holder (or group of holders as defined in Section 13(d) of the Securities Exchange Act of 1934) 
+of shares of Series B preferred stock is entitled to cast generally cannot exceed 4.99% of the total number of shares of common stock then outstanding.
 
 ## 2. Companies Status Not Determined yet
 ### 28917 D
@@ -180,7 +184,17 @@ On July 1, 2004 the Board of Directors declared a cash dividend payable to the h
 ### 730469
 This table does not include Class B Stock as it is currently 100% owned by wholly-owned subsidiaries of the Company 
 and as a result has no voting rights and is treated for financial purposes and for purposes of the Company’s Charter, as treasury stock.
-
+### 740796
+Changed in 2003.
+### 754568
+Complicated.
+### 755113
+Changed from 3 types of Common Stock (Class A/B/C Common Stock) to 2 types of Common Stock (Class A/D Common Stock).  
+The shares include (a) an aggregate of 913,303 shares of Class A Common Stock; (b) an aggregate of **17,154,304**
+shares of Class A Common Stock issuable upon conversion of **1,299,569** shares of Class C Common Stock;   
+the close of business on the record date are entitled to **one vote** for each share of Common Stock **(regardless of class)** then held.
+### 755806
+Changed in 2006.
 
 
 ## 2. Process Method
