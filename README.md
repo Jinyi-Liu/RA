@@ -152,12 +152,34 @@ giving effect to the beneficial ownership cap restrictions, the Series A Preferr
 as of March 28, 2008 is convertible into **11,666,195** shares of common stock and the holders of the Series A Preferred Stock 
 vote on an as-converted basis with the holders of our common stock. 
 The Company has no other voting securities.
-
-
-
-
-
-
+### 320017
+No dividends paid for Common Stock. And the situation about the dividends of Preferred Stock is complicated.
+### 320121
+No dividends paid for Common Stock. But there were dividends for Preferred Stock.
+### 354053
+The Company has never paid cash dividends on either class of its Common Stock and does not intend to do so in the foreseeable future. 
+For information concerning dividends paid on the Company’s Preferred Stock, see Items 6 and 8 below.
+### 355627
+Retired Class B Common Stock in 2006.
+### 704384
+We have never declared or paid any cash dividends and do not anticipate paying cash dividends in the foreseeable future.  
+### 706688 *
+Retired non-voting Common Stock in 2010.
+### 708848
+6 types.
+### 717954
+Calculate the shares of Common Stock and Class B Common Stock using the whole shares of both stocks.
+### 719483
+Never paid cash dividends on common stock and do not expect to do so in the foreseeable future.  
+Issuance of common stock in lieu of cash dividends on preferred stock.
+### 722567
+Dividends?   
+We do not have the financial capacity to pay dividends and also our Credit Facility prohibits us from paying any cash dividends on our capital stock in the future.
+### 723888 ?
+On July 1, 2004 the Board of Directors declared a cash dividend payable to the holders of its common and preferred stock (on an as converted basis).
+### 730469
+This table does not include Class B Stock as it is currently 100% owned by wholly-owned subsidiaries of the Company 
+and as a result has no voting rights and is treated for financial purposes and for purposes of the Company’s Charter, as treasury stock.
 
 
 

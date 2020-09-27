@@ -8,7 +8,7 @@ html_path = './txt2html_files'
 html_files = os.listdir(html_path)
 html_files.sort()
 re_seq = re.compile('\d+')
-outstanding_limit = 20000
+outstanding_limit = 100000
 
 
 def get_tag_with_keyword_in_text(tags, keyword):
