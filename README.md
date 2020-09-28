@@ -15,27 +15,19 @@ of shares of Series B preferred stock is entitled to cast generally cannot excee
 ### 28917 D
 Class A Common Stock are empowered as a class to elect one-third of the Directors and the holders of Class B Common Stock
  are empowered as a class to elect two-thirds of the Directors.
-
-
 ### 30419
 Common stock & Preferred stock(42.15 votes per share)  
 No dividend paid for common stock.
-
 ### 33113
 Only on liquidation could the preferred stock shareholder receive the dividends.
-
 ### 39648 G&K SERVICES INC
 Conversed all Class B shares to Class A shares in 2005.
-
 ### 43196 GRAY TELEVISION INC
 Assumes equal dividends as before 2008.
-
 ### 43920
 More than 2003-2007 as in the raw excel.  
-
 ### 46640
 Little preferred stock.
-
 ### 49401
 2004 Special cash dividend?  
 Commencing with the quarterly dividend declared on February 17, 2004, the Board of Directors increased the regular 
@@ -44,84 +36,64 @@ Common Stock to $0.055 per share. Following the dividends declared on February 1
 regular quarterly dividends in 2004 on May 19, 2004, August 2, 2004 and November 4, 2004, each in the amount announced 
 on February 17, 2004. Also, on February 17, 2004, our Board of Directors declared a special cash dividend of $4.00 per 
 share on each of our Class A Common Stock and Class B Common Stock. 
-
 ### 50471 
 Don't know the per share dividend of preferred stock and the common stock has never paid dividends.
-
 ### 52532
 Common stock and preferred stock. One vote for each share. No dividend data in 10-K of both types of stock.
-
 ### 63814
 Don't know the way to deal with the dividend of common stock and preferred stock.
 The Company has not declared any dividends on its capital stock.
-
 ### 64472
 Common stock and Class B stock.  
 No dividend data.  
 Same voting right one any matter to be presented at the Annual Meeting. 
 The holders of Common Stock and Class B Stock will vote separately as a class on the election of Directors. 
-
 ### 74046
 More years than in the raw excel.
-
 ### 75208
 Hold less than 0.1% of the outstanding shares.
-
 ### 78966
 Common Stock; Series Three Preferred Stock.  
 No cash dividends on common stock have been paid during any year.
-
 ### 83490
 Common Stock and Series A Preferred Stock.  
 No cash dividends were declared or paid by the Company during 2004 or 2003, and the Company does not intend to 
 pay dividends on its Common Stock or Series A Preferred Stock in the foreseeable 
-
 ### 88948
 5 types of voting stocks. 
-
 ### 89261
 Class A stock and Class B stock have same voting power.  
 EXX has not declared nor paid any dividends during the last two fiscal years. EXX does not 
 intend to pay any cash dividends in the foreseeable future.
-
 ### 92103
 The holders of the Edison International Common Stock have the right to cast a total of 325,796,087 votes. 
 The holders of the SCE Cumulative Preferred Stock have the right to cast a total of 30,901,188 votes and the 
 holder of the SCE Common Stock, Edison International, has the right to cast a total of 434,888,104 votes. 
 Voting together as a class, the SCE shareholders have the right to cast a total of 465,789,292 votes.
-
 ### 94344
 More years than in the raw excel and Class B Stock may not be paid any dividends.  
 The certificate of incorporation provides that no cash dividends may be paid on its Class B Common Stock. 
-
 ### 96338
 Ignore 1,010 shares of Class A Preferred Stock which entitled to a total of 505 votes.
-
 ### 96831
 The current directors and current executive officers as a group held less than 1% of both types of shares.
-
 ### 97052
 4 types of voting stocks.  
 The Company historically has not paid cash dividends on its common stock.  The Company intends to retain all of its 
 earnings for the future operation and growth of its business and does not intend to pay cash dividends in the foreseeable future.  
 Additionally, certain covenants in our financing agreements restrict the payment of cash dividends.
-
 ### 99106
 No data of the dividend of the Series A Convertible Preferred Stock in the 10-K file.
-
 ### 100493
 Interesting. Sudden change of insider holdings of Class B Stock in 2011.
-
 ### 101538
  (1) 65,933,564 shares of common stock, (2) 177,904 shares of  Series C preferred stock, and 
  (3) 1,751, 005 shares of Series D preferred stock. The Company's Series B preferred stock does not have voting rights.   
 We have not declared or paid any dividends to our stockholders during the last five years and do not anticipate paying dividends 
 on our common stock in the foreseeable future.  Instead, we expect to retain earnings for the operation and expansion of our business.
 Can not determined the cash-flow rights.
-
 ### 101830
 Incorporation issue about the voting stocks (FON Stock and PCS Stock) which I can't determined.
- 
 ### 103595
 Scale the proportion of dividend to 1:0.65. 
 ### 104889
@@ -195,6 +167,45 @@ shares of Class A Common Stock issuable upon conversion of **1,299,569** shares 
 the close of business on the record date are entitled to **one vote** for each share of Common Stock **(regardless of class)** then held.
 ### 755806
 Changed in 2006.
+### 756502
+Issued Non-Voting Common Stock in 2007.
+### 770034
+We do not anticipate paying cash dividends in the foreseeable future. 
+### 771950
+Incorporation. Changed.
+### 778164
+Dividends. Common; Preferred.
+### 779226
+Dividends. Common; Preferred.
+### 783005
+The total voting power listed in the DEF-14A (2010-11-12 and 2012-03-23) might be wrong.
+### 786765
+Dividends. Common; Preferred
+### 790272
+Dividends. Common; Preferred. No 10-K files.
+### 796735
+Dividends. Class A; Class B; Preferred.
+### 797448
+Dividends. Common; Preferred.
+### 798078
+Dividends. Common; Series B Preferred; Series C Preferred.
+### 802481
+Time-varied. Changed to one vote per share for all common stocks in 2008.
+### 821130 **
+Telephone and Data Systems, Inc., a Delaware corporation (American Stock Exchange Listing Symbols TDS and TDS.S) (“TDS”), is the sole holder of 
+Series A Common Shares and holds 37,782,826 Common Shares, representing approximately 69.7% of the Common Shares.  
+And directors of Cellular(821130) holds TDS.
+### 837852
+The precise votes of Series E Preferred Stock?
+### 839443
+Two years for 10 votes per share. No specific data about voting power.
+### 845877
+All directors and executive officers did not hold any Voting Common Stocks but Non-Voting Common Stocks.
+### 858452
+Conversed Voting Preferred Stocks in 2004.
+
+
+
 
 
 ## 2. Process Method

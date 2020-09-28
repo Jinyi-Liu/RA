@@ -8,7 +8,7 @@ html_path = './txt2html_files'
 html_files = os.listdir(html_path)
 html_files.sort()
 re_seq = re.compile('\d+')
-outstanding_limit = 100000
+outstanding_limit = 1000000
 
 
 def get_tag_with_keyword_in_text(tags, keyword):
@@ -227,7 +227,7 @@ for file in files:
     keyword_share = 'outstanding'
     keyword_tr = 'as a group'
     # keyword_1023128 = 'All current executive officers and directors as a'
-    keyword_1053112 = "All executive officers and directors"
+    keyword_1053112 = "Directors and Officers Group"
 
     p_text = get_paragraph_with_keyword(soup, 'p', keyword=keyword_share)
     div_text = get_paragraph_with_keyword(soup, 'div', keyword=keyword_share)
