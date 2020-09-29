@@ -203,6 +203,32 @@ Two years for 10 votes per share. No specific data about voting power.
 All directors and executive officers did not hold any Voting Common Stocks but Non-Voting Common Stocks.
 ### 858452
 Conversed Voting Preferred Stocks in 2004.
+### 859368
+Changed in 2003.
+### 863456
+Changed in 2005.
+### 867773
+Changed in 2012.
+### 869986
+Mix.
+### 877212
+Changed in 2004.
+### 886137
+Changed in 2013.
+### 887921
+Changed in 2013.
+### 912603 
+Changed in 2010.
+### 917523
+Changed in 2007. No 10-K file.
+### 921768
+Class A for 53%. Class B for 47%.
+### 924940
+Changed in 2004?
+### 925645
+Changed in 2013.
+
+
 
 
 
