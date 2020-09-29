@@ -227,8 +227,12 @@ Class A for 53%. Class B for 47%.
 Changed in 2004?
 ### 925645
 Changed in 2013.
-
-
+### 927807
+Changed in 2011.
+### 931058
+The class C common stock is entitled to 70% of the voting power.
+### 935226
+Changed.
 
 
 
