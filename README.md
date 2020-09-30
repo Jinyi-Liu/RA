@@ -260,7 +260,14 @@ Indirect holding? Subsidiary.
 Changed. Strange.
 ### 1036188
 Changed to dual-class structure in 2011.
-
+### 1049606
+Class B common stock entitles its holder to ten votes with respect to the election of directors and one vote on all other matters.
+### 1050915
+Changed in 2012. Strange.
+### 1053507
+Changed.
+### 1057758
+Changed in 2007. Little voting power.
 
 
 
