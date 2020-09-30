@@ -233,7 +233,33 @@ Changed in 2011.
 The class C common stock is entitled to 70% of the voting power.
 ### 935226
 Changed.
-
+### 942319
+The Company has two classes of voting securities outstanding, its Common Stock, $.01 par value per share (the “Common Stock”), 
+of which **16,790,257** shares were outstanding as of the record date, March 24, 2003, and its Series C Convertible Preferred Stock, 
+$.01 par value per share (the “Series C Stock”), of which 31,092 shares were outstanding as of March 24, 2003. At any time 
+after October 12, 2003, this Series C Stock is convertible into **24,063,815** shares of Common Stock, representing 51% of 
+he outstanding shares of Common Stock on a fully diluted basis as of the date of this Proxy. The Series C Stock conversion 
+provisions include anti-dilution protections, which require among other things that *in no event will the Series C Stock 
+convert into less than* **51%** of the Company’s Common Stock.
+### 1001250
+More.
+### 1006265
+Vote cap.
+### 1012771
+Mix.
+### 1016177
+Changed.
+### 1016178
+record holders of Voting Stock on behalf of a person who beneficially owns in excess of 10% of the outstanding shares of Voting Stock 
+(“Excess Shares”) shall be entitled to cast only one-hundredth of one vote per share for each Excess Share.
+### 1016229
+Changed.
+### 1018522
+Indirect holding? Subsidiary.
+### 1034054
+Changed. Strange.
+### 1036188
+Changed to dual-class structure in 2011.
 
 
 
