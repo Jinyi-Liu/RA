@@ -268,7 +268,29 @@ Changed in 2012. Strange.
 Changed.
 ### 1057758
 Changed in 2007. Little voting power.
+### 1067983
+The assumption about the dividend between two types of Common Stock is probably wrong.
+### 1090425
+Mix.
+### 1090727
+Mix. Vote cap.
+### 1091667
+Each holder of Class B common stock is entitled to ten votes per share plus ten votes per share of Class B common stock 
+for which membership units in Charter Communications Holding Company, LLC held by Mr. Allen and his affiliates are exchangeable. 
+Accordingly, each outstanding share of Class B common stock was entitled to 67,836.4 votes at July 29, 2005.
+Changed.
+### 1096958
+Subsidiary?
+### 1109116
+?
+### 1114674
+Two
+### 1116030
+Combined.
 
+	
+Percentage ownership is based on 126,048,385 shares of common stock outstanding on February 28, 2003 (assuming conversion 
+of all outstanding shares of Class B and Class C common stock and Series A preferred stock).
 
 
 ## 2. Process Method
