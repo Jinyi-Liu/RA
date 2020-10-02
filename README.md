@@ -287,10 +287,62 @@ Subsidiary?
 Two
 ### 1116030
 Combined.
-
-	
-Percentage ownership is based on 126,048,385 shares of common stock outstanding on February 28, 2003 (assuming conversion 
-of all outstanding shares of Class B and Class C common stock and Series A preferred stock).
+### 1124610
+Directors help few stocks.
+### 1134765
+One Class ? Manager will be elected by our Class ? Members voting as a separate class. ? for A B C
+### 1165880
+Vote cap.
+### 1166691
+Class A for 66.67%; Class B for 33.33%
+### 1188382
+Wachovia Preferred Holding holds almost all of our 99,999,900 shares of common stock, each of which is entitled to one vote, 
+and all of our outstanding shares of Series B and Series C preferred securities
+### 1239188
+Preferred for 30%
+### 1253986
+Each of these operating partnership units held by Arbor Commercial Mortgage is paired with one share of our special voting 
+preferred stock, par value $0.01 per share that entitles the holder to one vote on all matters submitted to a vote of our stockholders. 
+Each share of special voting preferred stock will be redeemed and cancelled by us upon the redemption of its paired operating partnership unit for shares of our common stock or cash. 
+### 1273931
+Complicated conversion fo the Preferred stock.
+### 1293314
+The Company’s Amended and Restated Articles of Incorporation provide that the holders of Common Stock have the right to 
+elect 40% of the members of the Company’s Board of Directors, voting as a separate class 
+### 1299033 **
+If you hold shares of Class A common stock, you are entitled to one vote per share. Holders of shares of Class B common stock are entitled to the number of votes per share equal to (1) 10, multiplied by the sum of (a) the aggregate number of shares of Class B common stock held, and (b) the aggregate number of membership units held in our subsidiary, Calamos Holdings LLC, divided by (2) the number of shares of Class B common stock held. All of the 100 outstanding shares of Class B common stock are currently held by Calamos Family Partners, Inc., which also holds 76.8 million membership units in Calamos Holdings LLC. As a result, Calamos Family Partners, Inc. is entitled to approximately 768 million votes, representing 100% of the Class B voting power and 97.1% of the combined voting power of our company.
+### 1322705
+Class A/B/C/D Common Stock.
+•   Holders of Class A Common Stock may vote on the election of Mr. David K. Chao to serve as a Class A Director on our Board of Directors;
+•   Holders of Class B Common Stock may vote on the election of Dr. Hector de J. Ruiz to serve as a Class B Director on our Board of Directors;
+•   Holders of Class A Common Stock, Class B Common Stock, Class C Common Stock and Class D Common Stock, voting together as a single class, may vote on the ratification of the appointment of our independent registered public accounting firm for the current fiscal year.
+Not so many differences.
+### 1351051
+2015 Strange.
+### 1360604
+Changed in 2014.
+### 1360901
+Complicated.
+### 1371446
+Parent company.
+### 1373670
+Class A; CLass B Common. Same voting rights and same cash-flow rights.
+### 1377013
+Subsidiary.
+### 1385613
+Vote cap.
+### 1396546
+1 share of Class B Common Stock.  
+The share of Class B common stock entitles its holder to a number of votes that is equal to the total number of shares of 
+class A common stock for which the partnership units that such holder holds in our operating partnership,
+### 1397403
+Mix.
+### 1397872
+Membership.
+### 1400891
+Mix.
+### 1408198
+Mix.
 
 
 ## 2. Process Method
