@@ -343,6 +343,32 @@ Membership.
 Mix.
 ### 1408198
 Mix.
+### 1464830
+Changed to 40 votes per share for Class B Common Stock.
+### 1470215
+Each stockholder is entitled to one vote for each share of Towers Watson Common Stock, regardless of the class or series of Common Stock.
+### 1479046
+The calculations of beneficial ownership in this table are based on 4,487,485 shares of our Class A Common Stock 
+and 750,000 shares of our Class A Convertible Participating Preferred Stock, convertible into 3,000,000 shares of Class A Common Stock 
+(assuming an exchange ratio of 4:1), outstanding as of April 1, 2010 and 545,585 shares of our Class A Series 2 Convertible Participating 
+Preferred Stock, convertible into 2,182,340 shares of Class A Common Stock (assuming an exchange ratio of 4:1), 
+and 40,000 shares of Class A Common Stock issuable upon closing of our rights offering on or about April 12, 2010.
+### 1479426
+Voting units.
+### 1499912
+Voting units.
+### 1506307
+However, owning the Class B common stock and Class C common stock only entitles you to vote on the election of directors.
+### 1534504
+Voting units.
+### 1555365
+Parent company.
+### 1568669
+Units.
+### 1590976
+Units.
+### 1599947
+Mix.
 
 
 ## 2. Process Method
