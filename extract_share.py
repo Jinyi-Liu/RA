@@ -8,7 +8,7 @@ html_path = './txt2html_files'
 html_files = os.listdir(html_path)
 html_files.sort()
 re_seq = re.compile('\d+')
-outstanding_limit = 100000
+outstanding_limit = 1000000
 
 
 def get_tag_with_keyword_in_text(tags, keyword):
@@ -27,10 +27,10 @@ def get_tag_with_keyword_in_text(tags, keyword):
         tags_return = []
         for index in tags_index:
             if index >= 1:
-                #tags_return.extend(tags_text[index-1:index+1])  # Get the previous and the next tag.
+                # tags_return.extend(tags_text[index-1:index+1])  # Get the previous and the next tag.
                 tags_return.extend([tags_text[index]])
             else:
-                tags_return.extend(tags_text[index:index+2])  # Special case.
+                tags_return.extend(tags_text[index:index + 2])  # Special case.
         return tags_return
     else:
         # Not tr tag.
@@ -104,7 +104,8 @@ def return_whether_as_a_group(outstanding_num, CIK):
             return True
         elif len(outstanding_num) >= 3 and get_value(outstanding_num[-1]) <= 101:
             return True
-        elif len(outstanding_num) == 2 and get_value(outstanding_num[0])>outstanding_limit and get_value(outstanding_num[1])<=105:
+        elif len(outstanding_num) == 2 and get_value(outstanding_num[0]) > outstanding_limit and get_value(
+                outstanding_num[1]) <= 105:
             return True
         else:
             return False
@@ -124,8 +125,9 @@ def return_whether_as_a_group(outstanding_num, CIK):
             return False
 
 
-
 pre_name = input()
+
+
 def return_condition(CIK, tag_type=None, outstanding_num=None):
     index = False
     CIK_list = [356080, 357294]
@@ -133,7 +135,7 @@ def return_condition(CIK, tag_type=None, outstanding_num=None):
                   863456, 867773, 872589]  # outstanding 2 types
     CIK_list_2 = [796735, 858452, 859735, 880117, 1100395, 1134061, 1439404]  # outstanding 3 types
     CIK_list_3 = [887733, 911177, 922487, 923877, 924940, 944136, 1012620, 1070534, 109483, 1095996, 1099358, 1142417,
-                  1166691, 1232241, 1288469, 1288776,3116]  # 2 types and 3 types
+                  1166691, 1232241, 1288469, 1288776, 3116]  # 2 types and 3 types
     CIK_list_5 = [1061069, 1112263, 1344154, 1528356]  # 2\3\4 types
     CIK_list_4 = [928658, 1232241, 1463833, 1468174, 1481792, 1514514, 1541401]  # more than 4 types
     # Below search for ownership percent
@@ -215,8 +217,6 @@ def write_to_file(num_list, file_to_write):
         file_to_write.write(_)
         file_to_write.write('\t')
 
-# files=['5133_1.html']
-# files=['16918_1.html']
 
 for file in files:
     data = open(html_path + '/' + file)
@@ -245,7 +245,7 @@ for file in files:
     float_share_list, max_list = to_float(str_share_list)
     max_list.sort(reverse=True)
 
-    out_share_list=[]
+    out_share_list = []
     for _, __ in zip(float_share_list, str_share_list):
         if max_list[0] in _:
             out_share_list = __
@@ -258,7 +258,5 @@ for file in files:
             write_to_file(as_a_group_list[1], f)
     f.write(file)
     f.write('\n')
-    # print_num(tr_asa_text,re_num,f,tag_type='tr')
     f.close()
     print(file)
-

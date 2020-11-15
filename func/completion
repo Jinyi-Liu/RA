@@ -1,0 +1,5 @@
+from func import get_processed
+
+CIK = get_processed.CIK_T()
+
+# date = soup.select('#formDiv > div.formContent > div:nth-child(1) > div:nth-child(2)')[0].next

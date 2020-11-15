@@ -1,5 +1,4 @@
 from bs4 import BeautifulSoup
-import re
 import os
 import pandas as pd
 import numpy as np
@@ -52,3 +51,5 @@ for item in _set:
     f.write(item)
     f.write('\n')
 f.close()
+
+

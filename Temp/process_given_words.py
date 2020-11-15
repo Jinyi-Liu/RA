@@ -13,7 +13,7 @@ html_with_keywords = './with_keywords'
 data = pd.read_excel('checking_.xlsx')
 check = data[['CIK','Dual']]
 check.loc[check['Dual']==' ','Dual']=np.nan
-checked_CIK = list(set(check.loc[~pd.isnull(check)['Dual']].CIK.values))
+checked_CIK = list(set(check.loc[~pd.isnull(check)['Dual']].CIK_T_tbd.values))
 
 
 def read_html_names(txt):
