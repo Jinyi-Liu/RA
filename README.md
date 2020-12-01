@@ -371,12 +371,13 @@ Units.
 Mix.
 
 
-## 2. Process Method
-### 2.1 Description
+
+## 3. Process Method
+### 3.1 Description
 
 
-### 2.2 Voting Example
-#### 2.2.1 1611988 Fifth Street Asset Management Inc. 2015-04-23
+### 3.2 Voting Example
+#### 3.2.1 1611988 Fifth Street Asset Management Inc. 2015-04-23
 |SHAOUTA|SHAOUTB|VOTEA|VOTEB|CLASSANUM|CLASSAPCT|CLASSBNUM|CLASSBPCT|VOTEPCT|
 |:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 |6,000,033 |42,856,854|1|5|184,283|3.10|42,854,854|100.00|97.35|  
@@ -386,8 +387,8 @@ The method of computing voting rights using now
 : ![equ](https://latex.codecogs.com/gif.latex?\frac{ClassAnum*VoteA&plus;ClassBnum*VoteB}{ClassAnum/ClassApct*VoteA&plus;ClassB/ClassBpct*VoteB}=97.38%)  
 
 
-### 2.3 Cash-flow Example
-#### 2.3.1 *34115* *CLAIRES STORES INC* 2006-05-25
+### 3.3 Cash-flow Example
+#### 3.3.1 *34115* *CLAIRES STORES INC* 2006-05-25
 |SHAOUTA|SHAOUTB|VOTEA|VOTEB|CLASSANUM|CLASSAPCT|CLASSBNUM|CLASSBPCT|VOTEPCT|DIVA|DIVB|CASHPCT|
 |:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 |94,045,702|4,884,557 |	1.00 | 10.00 |3,694,450|3.90 | 4,313,732 | 88.30 |  32.70|0.30|0.15|Not Given|  

@@ -5,6 +5,10 @@
       <excludeFolder url="file://$MODULE_DIR$/10k" />
       <excludeFolder url="file://$MODULE_DIR$/Dual_html" />
       <excludeFolder url="file://$MODULE_DIR$/Temp" />
+      <excludeFolder url="file://$MODULE_DIR$/check" />
+      <excludeFolder url="file://$MODULE_DIR$/def14a" />
+      <excludeFolder url="file://$MODULE_DIR$/def14a_final" />
+      <excludeFolder url="file://$MODULE_DIR$/def14a_new" />
       <excludeFolder url="file://$MODULE_DIR$/for_copy" />
       <excludeFolder url="file://$MODULE_DIR$/preprocess" />
       <excludeFolder url="file://$MODULE_DIR$/process_new" />
